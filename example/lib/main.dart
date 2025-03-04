@@ -154,13 +154,15 @@ class _MyAppState extends State<MyApp> {
                                 style: Theme.of(context).textTheme.titleLarge),
                             for (var device
                                 in devices.where((device) => device.isInput))
-                              Text('${device.name} (${device.type.name})'),
+                              Text(
+                                  '${device.address} ${device.name} (${device.type.name})'),
                             SizedBox(height: 16),
                             Text("Output devices",
                                 style: Theme.of(context).textTheme.titleLarge),
                             for (var device
                                 in devices.where((device) => device.isOutput))
-                              Text('${device.name} (${device.type.name})'),
+                              Text(
+                                  '${device.address} ${device.name} (${device.type.name})'),
                           ],
                         );
                       },

@@ -393,6 +393,7 @@ class AudioSession {
       isInput: inputPorts.contains(port),
       isOutput: outputPorts.contains(port),
       type: _darwinPort2type(port.portType, inputPorts: inputPorts),
+      address: port.uid,
     );
   }
 
@@ -460,6 +461,7 @@ class AudioSession {
       isInput: device.isSource,
       isOutput: device.isSink,
       type: _androidType2type(device.type),
+      address: device.address,
     );
   }
 }
@@ -669,12 +671,16 @@ class AudioDevice {
   /// The type of this device.
   final AudioDeviceType type;
 
+  /// Optional mac address of the device
+  final String? address;
+
   AudioDevice({
     required this.id,
     required this.name,
     required this.isInput,
     required this.isOutput,
     required this.type,
+    required this.address,
   });
 
   @override
@@ -685,7 +691,7 @@ class AudioDevice {
 
   @override
   String toString() =>
-      'AudioDevice(id:$id,name:$name,isInput:$isInput,isOutput:$isOutput,type:$type)';
+      'AudioDevice(id:$id,name:$name,isInput:$isInput,isOutput:$isOutput,type:$type, address: $address)';
 }
 
 /// An enumeration of the different audio device types.
